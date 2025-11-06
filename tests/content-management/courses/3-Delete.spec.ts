@@ -15,11 +15,11 @@
    await page.waitForTimeout(2000);
  
   await page.getByRole('link', { name: 'e2e-test', exact: true }).first().click();
-  await page.waitForTimeout(2000);
-  await page.getByRole('link', { name: 'Edit', exact: true }).first().click();
+  await page.getByRole('link', { name: 'View' }).nth(3).click();
+  await page.getByRole('button', { name: 'Delete' }).click();
+  await page.getByRole('button', { name: 'Delete' }).click();
+     await page.waitForTimeout(2000);
 
-   
-    await page.getByRole('button', { name: 'Delete' }).click();
-    await page.getByRole('dialog').getByRole('button', { name: 'Delete' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Delete' }).click();
   
 });
