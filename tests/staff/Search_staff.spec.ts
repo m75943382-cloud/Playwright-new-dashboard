@@ -1,14 +1,17 @@
-import { test, expect } from '@playwright/test';
-
-test('test', async ({ page }) => {
-  await page.goto('https://sm.wefaq.site/new-dashboard/login');
-  await page.getByRole('textbox', { name: 'Email address*' }).click();
-  await page.getByRole('textbox', { name: 'Email address*' }).fill('mohamed.gamaan@emlenotes.com');
-  await page.getByRole('textbox', { name: 'Password*' }).click();
-  await page.getByRole('textbox', { name: 'Password*' }).fill('Mohamed@123');
-  await page.getByRole('button', { name: 'Sign in' }).click();
+ import { test, expect } from '@playwright/test';
+ 
+ test.use({
+   storageState: 'auth.json'
+ });
+ 
+ test('test', async ({ page }) => {
+  await page.goto('https://sm.wefaq.site/new-dashboard');
   await page.getByRole('link', { name: 'Staff' }).click();
   await page.getByRole('searchbox', { name: 'Search', exact: true }).click();
-  await page.getByRole('searchbox', { name: 'Search', exact: true }).fill('ali');
-  await page.getByRole('link', { name: 'Omar Goma Ali No email' }).click();
-});
+  await page.getByRole('searchbox', { name: 'Search', exact: true }).fill('test');
+  await page.getByRole('link', { name: 'View' }).first().click();
+  await page.getByRole('link', { name: 'Edit', exact: true }).click();
+  await page.getByRole('spinbutton', { name: 'Allowed Devices*' }).click();
+  await page.getByRole('spinbutton', { name: 'Allowed Devices*' }).fill('2');
+  await page.getByRole('button', { name: 'Save changes' }).click();
+  });

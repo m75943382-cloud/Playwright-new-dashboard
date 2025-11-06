@@ -15,9 +15,11 @@ test('test', async ({ page }) => {
   await page.waitForTimeout(2000);
 
 
-  await page.getByRole('link', { name: 'e2e-test' }).click();
-  await page.getByRole('link', { name: 'Edit', exact: true }).click();
+  await page.getByRole('link', { name: 'e2e-test', exact: true }).first().click();
+    await page.waitForTimeout(2000);
 
+  await page.getByRole('link', { name: 'Edit', exact: true }).click();
+ 
   await page.getByRole('spinbutton', { name: 'Price*' }).click();
   await page.getByRole('spinbutton', { name: 'Price*' }).fill('101');
   await page.getByRole('checkbox', { name: 'Display Price' }).uncheck();
