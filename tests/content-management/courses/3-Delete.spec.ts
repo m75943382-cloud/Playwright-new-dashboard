@@ -12,7 +12,7 @@
    await page.goto('https://sm.wefaq.site/new-dashboard/courses?search=e2e-test');
    await page.getByRole('searchbox', { name: 'Search', exact: true }).fill('e2e-test');
    await page.getByRole('searchbox', { name: 'Search', exact: true }).press('Enter');
-   await page.waitForTimeout(2000);
+   //await page.waitForTimeout(2000);
  
   await page.getByRole('link', { name: 'e2e-test', exact: true }).first().click();
   await page.getByRole('link', { name: 'View' }).nth(3).click();
